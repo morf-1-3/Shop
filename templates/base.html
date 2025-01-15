@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+{% load category_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+    {% block extracss %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu"> 
+                <div class="dropdown">
+                    <button class="dropdown-button">Каталог</button> 
+                        <ul class="dropdown-catalog">
+                      
+                            {% show_caregories %} 
+                        </ul>                
+                </div>
+
+
+                <li class="menu-item"><a href="/">Home</a></li> 
+                <li class="menu-item"><a href="/products/">Products</a></li>
+                <li class="menu-item"><a href="/about">About</a></li>
+                <li class="menu-item"><a href="/contact">Contact</a></li> 
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Основний вміст сторінки -->
+        {% endblock %}
+    </main>
+    <footer>
+        <!-- Футер -->
+    </footer>
+</body>
+</html>
