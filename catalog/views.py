@@ -8,8 +8,8 @@ def show_category(request:HttpRequest, category:str):
     context = {}
     if request.method == "GET":
         categories = Category.objects.all()
-        if categories.filter(name__iexact=category).exists():
-            my_category = categories.get(name__iexact=category)
+        if categories.filter(name_en__iexact=category).exists():
+            my_category = categories.get(name_en__iexact=category)
             products = my_category.products.all()
             context["products"] = products
             return render(request, 'catalog/category.html',context)

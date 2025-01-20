@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'catalog/css/product.css' %}">
+{% endblock %}
 
 {% block content %}
     <div class="item">
@@ -10,5 +13,6 @@
             <h2>опис</h2>
             <p>{{product.description}}</p>
         </div>
+        <button class="add_to_cart" id="add_to_cart_{{product.id}}">В кошик</button>
     </div>
 {% endblock %}

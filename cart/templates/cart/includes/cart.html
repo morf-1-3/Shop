@@ -1,0 +1,13 @@
+
+{% for product in products %}
+<div class="products-in-cart" id="products-in-cart-{{product.id}}">
+    <img src="{{product.product.images.first.image.url}}" alt="">
+    <p>{{product.product.name}}</p>
+    <div class="count-product">
+        <button class="minus_count" id="minus_count_{{product.id}}">-</button>
+        <input type="number" name="" id="count_{{product.id}}" value="{{product.count}}" min="1" max="9">
+        <button class="plus_count" id="plus_count_{{product.id}}">+</button>
+    </div>
+    <button class="remove_product_in_cart" id="remove_product_cart_{{product.id}}">remove</button>
+</div>
+{% endfor %}

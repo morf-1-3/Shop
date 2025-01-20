@@ -42,3 +42,89 @@ nav ul li a:hover {
     width: 100%;
     bottom: 0;
 } */
+/* Стилі для навігаційного меню користувача */
+/* Стилі для навігаційного меню користувача */
+.user-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Вирівнювання по правому краю */
+}
+
+.user-menu li {
+    margin: 0 15px;
+}
+
+.user-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.user-menu li a:hover {
+    text-decoration: underline;
+}
+
+
+.background{
+    display: none;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.43);
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.background.active{
+    display: flex;
+}
+
+.cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+}
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 15px;
+}
+.products-in-cart{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+.products-in-cart img{
+    width: 100px;
+    height: 100px;
+}
+.count-product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.count-product input{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}

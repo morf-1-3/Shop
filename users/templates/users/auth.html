@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'users/css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+ <form action="" method="post" class="register">
+    {% csrf_token %}
+
+
+    <label for="username">Логін</label>
+    <input type="text" name="username" id="username" value="{{username}}" required>
+
+    <label for="password">Пароль</label>
+    <input type="password" name="password" id="password" required>
+
+
+    <button>Увійти</button>
+    <h1>{{error}}</h1>
+    <p>Немає аккаунту? 
+    <a href="{% url 'register' %}">Зареєструватися</a></p>
+    
+ </form>
+{% endblock %}

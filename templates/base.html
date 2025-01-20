@@ -7,14 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Welcome{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
+    <script src="{% static 'js/cart.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% block extracss %}
     {% endblock %}
 </head>
 <body>
+    {% csrf_token %}
     <header>
         <nav>
             <ul class="menu"> 
+                {% if user.is_authenticated %}
+                <div class="name-user">{{ user.get_short_name|default:"Користувач" }}</div>
+                {% endif %}
+                
                 <div class="dropdown">
                     <button class="dropdown-button">Каталог</button> 
                         <ul class="dropdown-catalog">
@@ -28,6 +34,16 @@
                 <li class="menu-item"><a href="/products/">Products</a></li>
                 <li class="menu-item"><a href="/about">About</a></li>
                 <li class="menu-item"><a href="/contact">Contact</a></li> 
+                
+            </ul>
+            <ul class="user-menu">
+                {% if user.is_authenticated %}
+                <li class="menu-user"><a href="{% url 'logout' %}">logout</a></li> 
+                {% else %}
+                <li class="menu-user"><a href="{% url 'login' %}">login</a></li> 
+                {% endif %}
+                <!-- <li class="menu-user" id="opencart"><a href="/products/">cart</a></li> -->
+                <li class="menu-user"><button id="opencart">cart</button></li>
             </ul>
         </nav>
     </header>
@@ -36,6 +52,18 @@
         <!-- Основний вміст сторінки -->
         {% endblock %}
     </main>
+
+    <div class="background">
+        <div class="cart">
+            <div class="cart-header">
+                <p>Cart</p>
+                <button id="close_cart">close cart</button>
+            </div>
+            <div class="body"></div>
+            
+        </div>
+    </div>
+
     <footer>
         <!-- Футер -->
     </footer>

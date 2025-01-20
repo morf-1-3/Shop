@@ -1,0 +1,49 @@
+/* Стилі для продукту */
+.item {
+    background-color: white;
+    padding: 50px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+.item:hover {
+    transform: scale(1.01);
+}
+
+.item img {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+.name {
+    font-size: 2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.price {
+    font-size: 1.5em;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.item-description {
+    margin-top: 20px;
+}
+
+.item-description h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.item-description p {
+    font-size: 1.2em;
+    color: #666;
+}

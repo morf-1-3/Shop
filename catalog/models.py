@@ -17,6 +17,7 @@ class Image(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255,verbose_name="Назва категорії")
+    name_en = models.CharField(max_length=255,verbose_name="Назва англійською")
     parent_category = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True, related_name="sub_categories",verbose_name="Батьківська категорія")
     description = models.TextField(verbose_name="Опис")
     image = models.OneToOneField(Image, on_delete=models.SET_NULL, blank=True, null= True,verbose_name="фотографія")
