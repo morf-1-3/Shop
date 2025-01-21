@@ -14,16 +14,22 @@ def main(request:HttpRequest):
     return response 
 
 def get_cart(request: HttpRequest):
-    
-    cart = Cart.get_cart(request)
-    response = render(request,"cart/includes/cart.html",{'products': cart.products.all()})
-  
 
+    cart = Cart.get_cart(request)
+    # if "cart_id" not in request.COOKIES:
+        
+    #     request.COOKIES["cart_id"] = cart.cart_id 
+    
+    response = render(request,"cart/includes/cart.html",{'products': cart.products.all()})
+    if "cart_id" not in response.cookies and cart.cart_id:
+        response.set_cookie('cart_id', cart.cart_id)
+    
     return response
 
 def add_to_cart(request:HttpRequest,product_id:int):
     if request.method == "POST":
         cart = Cart.get_cart(request)
+        
         products = cart.products.all()
         if(products.filter(product__id=product_id)).exists():
             product = products.get(product__id=product_id)

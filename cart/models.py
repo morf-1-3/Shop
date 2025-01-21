@@ -22,14 +22,17 @@ class Cart(models.Model):
                 cart_obj = cls.objects.create(user=request.user)
                 # return (response,cart_obj)
         else:
-            cart_obj = request.COOKIES.get('cart_id')
-            if cart_obj:
-                
-                cart_obj = cls.objects.filter(cart_id = cart_obj)
-                
+            cart_id = request.COOKIES.get('cart_id')
+            if cart_id:                
+                cart_obj = cls.objects.filter(cart_id = cart_id)
+                if cart_obj:
+                    
+                    cart_obj = cls.objects.get(cart_id = cart_id)
+                    
                 if cart_obj and response:
                     return (response,cart_obj)
                 if cart_obj:
+                    
                     return cart_obj
             #     else:
             #         cart_obj = cls.objects.create()
@@ -45,8 +48,13 @@ class Cart(models.Model):
                 cart_obj = cls.objects.create()
                 cart_obj.cart_id = hashlib.sha256(str(cart_obj.id).encode()).hexdigest()
                 cart_obj.save()
+                # if(not response):
+                #     return(cart_obj,)
+                # print(response)
+                # response = HttpResponse()
                 if response:
                     response.set_cookie('cart_id', cart_obj.cart_id)
+                
         if response:
             return (response,cart_obj)
         else:
