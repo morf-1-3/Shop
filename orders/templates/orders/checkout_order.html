@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'orders/css/checkout.css' %}">
+{% endblock %}
+{% block content %}
+<div class="cart-products">
+    {% for product in cart.products.all %}
+        <div class="product-in-cart">
+        {{product.product.name}}
+        <p>{{product.count}}</p>
+        <div class="price">{{product.get_price}}</div>
+        </div>
+    {% endfor %}
+    <div class="total-price">Загальна вартість: {{cart.get_total_price}}</div>
+</div>
+<div class="form-order">
+    <form action="" class="form-info-user" method="post">
+        {% csrf_token %}
+        <label for="firstname">Ім'я</label>
+        <input type="text" name="user_first_name" id="firstname" value="{{first_name}}" required >
+
+        <label for="lastname">Прізвище</label>
+        <input type="text" name="user_last_name" id="lastname" value="{{last_name}}" required>
+        
+        <label for="lastname">Номер телефону</label>
+        <input type="tel" name="phone_number" id="phone-number" value="{{phone_number}}" required>
+        <div class="error">{{error}}</div>
+        <button>Замовити</button>
+    </form>
+
+</div>
+{% endblock %}

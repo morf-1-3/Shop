@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Welcome{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <script src="{% static 'js/cart.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
+    <script src="{% static 'cart/js/cart.js' %}" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% block extracss %}
     {% endblock %}
@@ -60,7 +61,11 @@
                 <button id="close_cart">close cart</button>
             </div>
             <div class="body"></div>
-            
+            <div class="cart-footer">
+                <button clas="back-to-shop">Продовждити вибір товарів</button>
+                <div class="total-price">Разом: sum</div>
+                <button class="make-oder-button">Оформити замовлення</button>
+            </div>
         </div>
     </div>
 

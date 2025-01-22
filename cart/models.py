@@ -10,6 +10,15 @@ class Cart(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name="Користувач",related_name="cart", null=True, blank=True)
     cart_id = models.CharField(max_length=255,blank=True,null=True)
 
+    def get_total_price(self) ->float:
+        products = self.products.all()
+        total_price:float = 0
+        
+        for product in products:
+            total_price += product.get_price()
+
+        return total_price
+
     @classmethod
     def get_cart(cls,request:HttpRequest, response:HttpResponse=None):
         # request = response.request
@@ -75,9 +84,13 @@ class ProductInCart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE,verbose_name="Продукти")
     count = models.PositiveIntegerField(verbose_name="Кількість", default=1)
 
+
     class Meta:
         verbose_name = "Продукт в кошику"
         verbose_name_plural = "Продукти в кошику"
 
+    def get_price(self) -> float:
+        return self.count * (self.product.price if self.product.price else 0)
+    
     def __str__(self):
         return f"Продукти в {self.cart.user}"

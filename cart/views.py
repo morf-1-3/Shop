@@ -72,3 +72,11 @@ def remove_count_cart(request:HttpRequest,product_id:int):
         product.delete()
         
     return HttpResponse(200)
+
+# def redirect_to_order(request:HttpRequest)
+#     cart = Cart.get_cart(request)
+#     products = cart.products.all()
+
+#     context = {
+#         "products": products
+#     }

@@ -1,0 +1,42 @@
+/* Загальний контейнер для кошика */
+.cart-products {
+    position: fixed; /* Фіксуємо кошик у правій частині вікна */
+    top: 10%; /* Відступ від верхнього краю */
+    right: 0; /* Вирівнюємо по правому краю */
+    width: 300px; /* Фіксована ширина кошика */
+    background-color: #f9f9f9; /* Світлий фон для контрасту */
+    border-left: 2px solid #ddd; /* Лінія для відокремлення від основного контенту */
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); /* Тінь для стилізації */
+    z-index: 1000; /* Пріоритет над іншими елементами */
+}
+
+/* Оформлення товарів у кошику */
+.product-in-cart {
+    display: flex;
+    justify-content: space-between; /* Вирівнювання елементів по краях */
+    align-items: center; /* Вирівнювання по вертикалі */
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Розділювальна лінія між товарами */
+}
+
+.product-in-cart p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.product-in-cart .price {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Загальна сума */
+.total-price {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+    text-align: center; /* Вирівнювання тексту по центру */
+}
