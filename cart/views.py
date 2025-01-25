@@ -20,7 +20,8 @@ def get_cart(request: HttpRequest):
         
     #     request.COOKIES["cart_id"] = cart.cart_id 
     
-    response = render(request,"cart/includes/cart.html",{'products': cart.products.all()})
+    # response = render(request,"cart/includes/cart.html",{'products': cart.products.all()})
+    response = render(request,"cart/includes/cart.html",{'cart': cart})
     if "cart_id" not in response.cookies and cart.cart_id:
         response.set_cookie('cart_id', cart.cart_id)
     

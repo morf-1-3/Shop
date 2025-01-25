@@ -8,7 +8,10 @@ body {
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding-top: 10px;
+    
+    max-height: 40px;
+    height: 40px;
 }
 
 nav ul {
@@ -128,3 +131,50 @@ nav ul li a:hover {
     background-color: transparent;
     border: none;
 } */
+
+
+/* /////////////////////////////////////////////////// */
+
+
+
+
+.background-menu{
+    display: none;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.43);
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    justify-content: center;
+    align-items: center;
+}
+.background-menu.active{
+    display: flex;
+}
+
+.categories-menu {
+    display: flex;
+    position:absolute; /* Фіксує меню на екрані */
+    top: 0px; /* Відступ від верхнього краю */
+    left: 0px; /* Відступ від лівого краю */
+    width: 250px; /* Ширина меню */
+    height: 100vh; /* Висота на весь екран */
+    background-color: #f9f4e4; 
+    /* background-color: rgba(0, 0, 0, 0.43); */
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Легка тінь для глибини */
+    overflow-y: auto; /* Вертикальна смуга прокрутки, якщо вміст перевищує висоту */
+    z-index: 1000; /* Забезпечує, що меню буде зверху інших елементів */
+    /* padding-top: 60px;  */
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding-top: 0px;
+    width: 100%;
+    max-height: 50px;
+    height: 50px;
+}

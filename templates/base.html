@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
     <script src="{% static 'cart/js/cart.js' %}" defer></script>
+    <script src="{% static 'js/base.js' %}" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% block extracss %}
     {% endblock %}
@@ -23,11 +24,11 @@
                 {% endif %}
                 
                 <div class="dropdown">
-                    <button class="dropdown-button">Каталог</button> 
-                        <ul class="dropdown-catalog">
+                    <button id="dropdown-button" class="dropdown-button">Каталог</button> 
+                        <!-- <ul class="dropdown-catalog">
                       
                             {% show_caregories %} 
-                        </ul>                
+                        </ul>                 -->
                 </div>
 
 
@@ -53,18 +54,38 @@
         <!-- Основний вміст сторінки -->
         {% endblock %}
     </main>
+    <div class="background-menu">
+        
+        <div class="categories-menu">
+            <div class="header">
+            
+            </div>
+            <ul class="dropdown-catalog">
+                        
+                {% show_caregories %} 
+            </ul> 
+        </div>
+    </div>
 
     <div class="background">
         <div class="cart">
             <div class="cart-header">
-                <p>Cart</p>
-                <button id="close_cart">close cart</button>
+                <p>Кошик</p>
+                <button id="close_cart">Закрити кошик</button>
             </div>
-            <div class="body"></div>
+            <div class="body">
+
+            </div>
             <div class="cart-footer">
-                <button clas="back-to-shop">Продовждити вибір товарів</button>
-                <div class="total-price">Разом: sum</div>
-                <button class="make-oder-button">Оформити замовлення</button>
+                
+                <div class="back-to-shop">
+                    <a href="/">Продовждити вибір товарів</a>
+                </div>
+                <div class="make-order">
+                    <a href="/order/checkout">Оформити замовлення</a>
+                </div>
+                
+                
             </div>
         </div>
     </div>

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load orders_tags %}
 {% block extracss %}
+<script src="{% static 'orders/js/checkout.js' %}" defer></script>
+
 <link rel="stylesheet" href="{% static 'orders/css/checkout.css' %}">
 {% endblock %}
 {% block content %}
@@ -17,17 +20,44 @@
 <div class="form-order">
     <form action="" class="form-info-user" method="post">
         {% csrf_token %}
-        <label for="firstname">Ім'я</label>
-        <input type="text" name="user_first_name" id="firstname" value="{{first_name}}" required >
+        <div class="recevirs-info">
+            <label for="firstname">Ім'я</label>
+            <input type="text" name="user_first_name" id="firstname" value="{{first_name}}" required >
 
-        <label for="lastname">Прізвище</label>
-        <input type="text" name="user_last_name" id="lastname" value="{{last_name}}" required>
+            <label for="lastname">Прізвище</label>
+            <input type="text" name="user_last_name" id="lastname" value="{{last_name}}" required>
+            
+            <label for="lastname">Номер телефону</label>
+            <input type="tel" name="phone_number" id="phone-number" value="{{phone_number}}" required>
+            
+        </div>
+        <div class="info-posta">
+            <h3>Оберіть почтове відділення</h3>
+        </div>
+        <div class="delivery-info">
+            <div class="search-settlement">
+                <label for="city_search"></label>
+                <input type="text" name="city_search" id="city_search" placeholder="Оберіть населений пункт" autocomplete="new-password">
+                <div class="scroll-element">
+                <!-- {% show_main_cities %} -->
+                
+                </div>
+            </div>
+            <div class="search-warehouse">
+                <label for="warehouse_cearch"></label>
+                <input type="text" class = "warehouse_cearch" name="warehouse_cearch" id="warehouse_cearch" placeholder="Оберіть відділення" autocomplete="new-password" disabled>
+                <input type="hidden" id="id-warehouse" name="id-warehouse">
+                <div class="warehouse-scroll-element">
         
-        <label for="lastname">Номер телефону</label>
-        <input type="tel" name="phone_number" id="phone-number" value="{{phone_number}}" required>
+                
+                </div>
+            </div>
+    
+        </div>
         <div class="error">{{error}}</div>
-        <button>Замовити</button>
+        <button class="info-button">Замовити</button>
     </form>
+    <div><a href="/">Повернутись до покупок</a></div>
 
 </div>
 {% endblock %}

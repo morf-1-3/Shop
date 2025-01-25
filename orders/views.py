@@ -3,6 +3,8 @@ from django.http import HttpRequest
 from .models import *
 from cart.models import *
 from users.models import *
+from .services.nova_posta import *
+from django.http import JsonResponse
 
 # Create your views here.
 def checkout(request: HttpRequest):
@@ -22,19 +24,22 @@ def checkout(request: HttpRequest):
         first_name = request.POST["user_first_name"]
         last_name = request.POST["user_last_name"]
         phone_number = request.POST["phone_number"]
+        warehouse_ref = request.POST["id-warehouse"]
         context["first_name"] = first_name
         context["last_name"] = last_name
         context["phone_number"] = phone_number
-        if(first_name and last_name and phone_number):
+        if(first_name and last_name and phone_number and warehouse_ref):
             if 2<=len(first_name)<30 and 2<=len(last_name)<30:
                 if 10<=len(phone_number) <=13:
-                    if False:
+                    if True:
                         order = Order.objects.create()
                         reveiver = Receiver.objects.create(
                             first_name = first_name,
                             last_name = last_name,
                             phone_number= phone_number,
-                            order = order)
+                            order = order,
+                            ref_warehouse = warehouse_ref
+                            )
                         for product in cart.products.all():
                             ProductInOrder.objects.create(
                                 product = product.product,
@@ -67,4 +72,24 @@ def make_order(request:HttpRequest):
         pass
        
 
-# def make_order(request:HttpRequest) 
+def show_seltements(request:HttpRequest,search_str: str = ""):
+    if search_str:
+        settlements = get_settlements(search_str)
+        context = {"main_sities" : settlements}
+    else:
+        context = {"main_sities": main_sities}
+
+    html = render(request,"orders/dropdown_cities.html",context).content.decode('utf-8')
+    # return render(request,"orders/dropdown_cities.html",context)
+    return JsonResponse({"html": html})
+
+def show_warehouses(request: HttpRequest, ref: str, search_str: str = ""):
+    if search_str:
+        warehouses = get_warehouses(ref,search_str)
+        context = {"main_sities" : warehouses}
+    else:
+        warehouses = get_warehouses(ref)
+        context = {"main_sities" : warehouses}
+    html = render(request,"orders/dropdown_cities.html",context).content.decode('utf-8')
+    return JsonResponse({"html": html})
+    

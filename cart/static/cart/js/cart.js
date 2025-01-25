@@ -10,7 +10,16 @@ function plusCountProduct(event){
             url: `/cart/plus_count_product/${id}/`,         
             method: 'POST', 
             headers: {'X-CSRFTOKEN': csrf},               
+            success: function(data){
+                const productsPrice = document.querySelector(`#products_price_${id}`)
+                const totalPriceStr = document.querySelector('.total-price');
+                const totalPrice = totalPriceStr.textContent.trimStart().split(' ')[3]
+                const productPrice = document.querySelector(`#product_price_${id}`)
 
+                totalPriceStr.textContent = "Загальна сумма : "+(parseFloat(productPrice.textContent) + parseFloat(totalPrice))+',00'
+                productsPrice.textContent = parseFloat(productsPrice.textContent) + parseFloat(productPrice.textContent)+',00'
+                
+            }
         });
     }
 }
@@ -26,7 +35,17 @@ function minusCountProduct(event){
         $.ajax({
             url: `/cart/minus_count_product/${id}/`,         
             method: 'POST', 
-            headers: {'X-CSRFTOKEN': csrf},               
+            headers: {'X-CSRFTOKEN': csrf},  
+            success: function(data){
+                const productsPrice = document.querySelector(`#products_price_${id}`)
+                const totalPriceStr = document.querySelector('.total-price');
+                const totalPrice = totalPriceStr.textContent.trimStart().split(' ')[3]
+                const productPrice = document.querySelector(`#product_price_${id}`)
+
+                totalPriceStr.textContent = "Загальна сумма : "+(parseFloat(totalPrice)-parseFloat(productPrice.textContent))+',00'
+                productsPrice.textContent = parseFloat(productsPrice.textContent) - parseFloat(productPrice.textContent)+',00'
+                
+            }             
 
         });
     }
@@ -43,8 +62,16 @@ function removeProduct(event){
         method: 'POST', 
         headers: {'X-CSRFTOKEN': csrf},               
         success: function(data){
+            
+            const productsPrice = document.querySelector(`#products_price_${id}`)
+            const totalPriceStr = document.querySelector('.total-price');
+            const totalPrice = totalPriceStr.textContent.trimStart().split(' ')[3]
+            totalPriceStr.textContent = "Загальна сумма : "+(parseFloat(totalPrice)-parseFloat(productsPrice.textContent))+',00'
+            
             const block = document.querySelector(`#products-in-cart-${id}`)
             block.remove()
+
+
         }
     });
     

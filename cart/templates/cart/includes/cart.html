@@ -1,13 +1,20 @@
 
-{% for product in products %}
+{% for product in cart.products.all %}
 <div class="products-in-cart" id="products-in-cart-{{product.id}}">
     <img src="{{product.product.images.first.image.url}}" alt="">
     <p>{{product.product.name}}</p>
+    <div class="product-price" id = "product_price_{{product.id}}">{{product.product.price}}₴</div>
     <div class="count-product">
         <button class="minus_count" id="minus_count_{{product.id}}">-</button>
-        <input type="number" name="" id="count_{{product.id}}" value="{{product.count}}" min="1" max="9">
+        <input type="number" name="" id="count_{{product.id}}" value="{{product.count}}" min="1" max="9" readonly>
         <button class="plus_count" id="plus_count_{{product.id}}">+</button>
+    </div>
+    <div class="products-price" id="products_price_{{product.id}}">
+        {{product.get_price}}
     </div>
     <button class="remove_product_in_cart" id="remove_product_cart_{{product.id}}">remove</button>
 </div>
 {% endfor %}
+<div class="total-price" id="total_price_{{cart.id}}"">
+    Загальна сумма : {{cart.get_total_price}}
+</div>
