@@ -77,22 +77,33 @@
     padding: 5px;
     border-radius: 15px;
 } */
-.products-in-cart{
+/* .products-in-cart{
     display: flex;
     gap: 20px;
+    max-width: 100%;
+    padding: 0px,15px;
+    align-items: center;
+} */
+.products-in-cart {
+    display: flex;
+    
+    gap: 10px;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
 }
 .products-in-cart img{
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    object-fit: cover;
 }
 .count-product{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.count-product input{
+/* .count-product input{
     width: 30px;
     display: flex;
     justify-content: center;
@@ -102,7 +113,7 @@
     text-align: center;
     background-color: transparent;
     border: none;
-}
+} */
 
 /* ............................. */
 
@@ -194,5 +205,107 @@
     background-color: #f9f9f9; /* Світло-сірий фон */
     border: 1px solid #dee2e6; /* Світло-сірий обрамлення */
     border-radius: 10px; /* Закруглені кути */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легка тінь для глибини */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Легка тінь для глибини */
+}
+
+.remove_product_in_cart {
+    /* width: 120px; */
+    display: inline-block; /* Додає блочний відображення для кнопки */
+    padding: 10px 15px; /* Внутрішні відступи для кнопки */
+    background-color: #f44336; /* Червоний колір фону */
+    color: #fff; /* Білий колір тексту */
+    text-decoration: none; /* Прибирає підкреслення тексту */
+    border: none; /* Видаляє рамку */
+    border-radius: 5px; /* Закруглює кути */
+    cursor: pointer; /* Додає курсор руки при наведенні */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Плавний перехід для фону та трансформацій */
+}
+
+.remove_product_in_cart:hover {
+    background-color: #d32f2f; /* Темніший червоний при наведенні */
+    transform: scale(1.05); /* Збільшує кнопку при наведенні */
+}
+
+.remove_product_in_cart:active {
+    background-color: #c62828; /* Ще темніший червоний при натисканні */
+    transform: scale(0.95); /* Трохи зменшує кнопку при натисканні */
+}
+
+.minus_count, .plus_count {
+    display: inline-block; /* Відображає елементи як блочні з можливістю горизонтального розташування */
+    width: 40px; /* Ширина кнопки */
+    height: 40px; /* Висота кнопки */
+    background-color: #007bff; /* Синій колір фону */
+    color: #fff; /* Білий колір тексту */
+    border: none; /* Видаляє рамку */
+    border-radius: 5px; /* Закруглення кутів */
+    font-size: 20px; /* Розмір тексту */
+    cursor: pointer; /* Курсор руки при наведенні */
+    text-align: center; /* Вирівнювання тексту по центру */
+    line-height: 40px; /* Вирівнювання тексту по вертикалі */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Плавний перехід для фону та трансформацій */
+}
+
+.minus_count:hover, .plus_count:hover {
+    background-color: #0056b3; /* Темніший синій колір при наведенні */
+    transform: scale(1.05); /* Збільшує кнопку при наведенні */
+}
+
+.minus_count:active, .plus_count:active {
+    background-color: #004494; /* Ще темніший синій при натисканні */
+    transform: scale(0.95); /* Трохи зменшує кнопку при натисканні */
+}
+
+.minus_count:focus, .plus_count:focus {
+    outline: none; /* Прибирає контур фокусу */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Додає тінь при фокусі */
+}
+
+
+input[type="number"] {
+    max-width: 25px; /* Ширина поля */
+    padding: 5px; /* Внутрішні відступи */
+    border: 1px solid #ccc; /* Колір і стиль рамки */
+    border-radius: 5px; /* Закруглені кути */
+    text-align: center; /* Вирівнювання тексту по центру */
+    background-color: #f9f9f9; /* Колір фону */
+    font-size: 16px; /* Розмір тексту */
+    color: #333; /* Колір тексту */
+    cursor: not-allowed; /* Курсор для полів тільки для читання */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Внутрішня тінь */
+}
+
+input[type="number"]:focus {
+    outline: none; /* Прибирає контур при фокусі */
+    border-color: #007bff; /* Колір рамки при фокусі */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Тінь при фокусі */
+}
+
+input[type="number"]:readonly {
+    background-color: #e9ecef; /* Світліший фон для полів тільки для читання */
+    color: #6c757d; /* Світліший колір тексту для полів тільки для читання */
+}
+
+
+.total-price {
+    background-color: #f8f9fa; /* Світлий фон */
+    color: #343a40; /* Темний колір тексту */
+    padding: 15px 20px; /* Внутрішні відступи */
+    border-radius: 8px; /* Закруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легка тінь */
+    font-size: 18px; /* Розмір тексту */
+    font-weight: 600; /* Жирність тексту */
+    text-align: center; /* Вирівнювання тексту по центру */
+    margin-top: 20px; /* Відступ зверху */
+}
+
+.products-in-cart p{
+    width: 100px;
+}
+.product-price{
+    width: 100px;
+}
+.products-price{
+    width: 100px;
 }

@@ -1,0 +1,8 @@
+{% if label == "instagram" or label == "facebook" or label == "telegram" %}
+<a class="{{label}}_tags" href="{{value}}">{{value}}</a>
+
+{% else %}
+
+<div class="{{label}}_tags">{{value}}</div>
+
+{% endif %}

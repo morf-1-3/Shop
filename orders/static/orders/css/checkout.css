@@ -3,7 +3,7 @@
     top: 100px;
     right: 10px;
     width: 450px;
-    height: calc(100vh - 100px);
+    /* height: calc(100vh - 100px); */
     background-color: #f8f9fa;
     border-left: 2px solid #dee2e6;
     overflow-y: auto;

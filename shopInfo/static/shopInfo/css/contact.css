@@ -1,0 +1,123 @@
+/* Контейнер "contact" */
+.contact {
+    text-align: center;
+    max-width: 800px; /* Обмеження ширини для зручного читання */
+    margin: 40px auto; /* Центрування на сторінці */
+    padding: 20px 30px; /* Внутрішні відступи для простору */
+    background-color: #ffffff; /* Білий фон для контрасту */
+    border-radius: 15px; /* Закруглені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* М'яка тінь */
+    border: 1px solid #eaeaea; /* Легкий обводок для структури */
+}
+
+/* Внутрішній стиль для балансу */
+.contact h1, 
+.contact h5, 
+.contact p, 
+.contact a {
+    margin: 0; /* Знімаємо стандартні відступи */
+    padding: 0; /* Знімаємо стандартні відступи */
+}
+
+/* Відступи між секціями всередині .contact */
+.contact > *:not(:last-child) {
+    margin-bottom: 20px; /* Проміжки між блоками */
+}
+
+/* Плавні анімації */
+.contact {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact:hover {
+    transform: translateY(-5px); /* Легка "підсвітка" при наведенні */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Більш виразна тінь */
+}
+
+
+/* Назва магазину */
+.shop_name h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Контактна інформація */
+.contact-info {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #34495e;
+}
+
+.contact_email, .contact_phone {
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+/* Карта */
+.contact-map {
+    margin: 20px 0;
+}
+
+.contact-google-map {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-map {
+    font-size: 16px;
+    color: #34495e;
+}
+
+/* Графік роботи */
+.contact-span {
+    margin: 20px 0;
+}
+
+.contact-span h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.work-on, .workoff {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+/* Соціальні мережі */
+.contact-social {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.contact-social a {
+    /* display: inline-flex; */
+    width: 200px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #2980b9;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-social a:hover {
+    color: #1abc9c;
+    
+}
+.img_logo_in_contact{
+    align-items: center;
+}
+.img_logo_in_contact img{
+    height: 250px;
+    width: 250px;
+}

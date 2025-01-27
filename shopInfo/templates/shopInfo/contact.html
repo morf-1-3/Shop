@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shop_info_tags %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'shopInfo/css/contact.css' %}">
+
+{% endblock %}
+{% block content %}
+<div class="contact">
+    <div class="shop_name">
+        <h1>{% show_shop_name %}</h1>
+    </div>
+    <div class="contact-info">
+        <div class="contact_email">
+            Електронна почта : {% show_email %}
+        </div>
+        <div class="contact_phone">
+            Номер телефону : {% show_phone %}
+        </div>       
+    </div>
+    <div class="contact-map">
+        <iframe class="contact-google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317.60236985906755!2d30.528453420686446!3d50.444472746289335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce54c1e48105%3A0x74d1d95832eb2407!2z0J7RhNGW0YEg0J_RgNC10LfQuNC00LXQvdGC0LAg0KPQutGA0LDRl9C90Lg!5e0!3m2!1sru!2sua!4v1737899932800!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        Адресса : {% show_adress %}
+    </div>
+    <div class="contact-span">
+        <h5>Графік роботи</h5>
+        <p class="work-on">{% show_work_span_on %}</p>
+        <p class="workoff">{% show_work_span_of %}</p>
+    </div>
+    <div class="contact-social">
+        <a href="{% show_instagram %}"><img src="{% static 'shopInfo/images/instagram.png' %}" alt="" width="15" height="15">Наш інстаграм</a>
+        <a href="{% show_facebook %}"><img src="{% static 'shopInfo/images/facebook.png' %}" alt="" width="15" height="15">Наш фейсбук</a>
+        <a href="{% show_telegram %}"><img src="{% static 'shopInfo/images/telegram.png' %}" alt="" width="15" height="15">Наш телеграм</a>
+    </div>
+    <div class="img_logo_in_contact">
+        <img src="{% show_logo %}" alt="">
+    </div>
+
+</div>
+{% endblock %}

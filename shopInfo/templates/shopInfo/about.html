@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shop_info_tags %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'shopInfo/css/about.css' %}">
+{% endblock %}
+{% block content %}
+<div class="description-container">
+    <!-- {{description|safe}} -->
+     {% show_description %}
+</div>
+
+{% endblock %}

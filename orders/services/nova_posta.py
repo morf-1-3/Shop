@@ -21,31 +21,27 @@ def get_settlements(part_find:str):
     query_setlement_json = {
     "apiKey": API,
     "modelName": "AddressGeneral",
-    "calledMethod": "getSettlements",
+    "calledMethod": "searchSettlements",
     "methodProperties": {
-        "FindByString" : part_find,
+        "CityName" : part_find,
         "Limit" : "7",
-        # "Ref" : "db5c88f0-391c-11dd-90d9-001a92567626"
-        # "Warehouse" : "1",
+
         }
     }
 
     response = requests.get(URL,json=query_setlement_json)
     
-    data = response.json()["data"]
+    data = response.json()["data"][0]["Addresses"] 
+    
     rez = []
+
     if len(data) > 0:
-        # for settlement in data:
-        #     name_settlement = f'{settlement["Description"]}, {settlement["RegionsDescription"] + " р-н," if settlement["RegionsDescription"] else ""} {settlement["AreaDescription"]} обл.'
-        #     ref = settlement["Ref"]
-        #     SimpleNamespace(Ref = ref, Description = name_settlement)
-        #     rez.append(SimpleNamespace(Ref = ref, Description = name_settlement))
+        
+
         rez = [
             SimpleNamespace(
                 Ref = settlement["Ref"], 
-                Description = f'{settlement["Description"]}, '
-                f'{settlement["RegionsDescription"] + " р-н, " if settlement["RegionsDescription"] else ""}'
-                f'{settlement["AreaDescription"]} обл.'
+                Description = settlement["Present"]
             )
             for settlement in data
         ]
@@ -60,10 +56,7 @@ def get_warehouses_by_ref(ref:str):
     "modelName": "AddressGeneral",
     "calledMethod": "getWarehouses",
     "methodProperties": {
-        
-
         "Ref" : ref,
-        # "WarehouseRef" : ref,
         "Limit" : "1",
   
   }
@@ -71,8 +64,6 @@ def get_warehouses_by_ref(ref:str):
   
     response = requests.get(URL,json=quert_warehouses)
     data = response.json()
-    # rez = []
-    # print(data)
     
 
 
@@ -84,14 +75,8 @@ def get_warehouses(ref:str,search_str:str=""):
     "calledMethod": "getWarehouses",
     "methodProperties": {
         "FindByString" : search_str,
-        # "CityName" : "Чернівці",
-        # "CityRef" : ref,
         "SettlementRef" : ref,
-        # "Page" : "1",
         "Limit" : "15",
-        # "Language" : "UA",
-        # "TypeOfWarehouseRef" : "00000000-0000-0000-0000-000000000000",
-        # "WarehouseId" : "151"
   }
 }   
   
@@ -105,16 +90,15 @@ def get_warehouses(ref:str,search_str:str=""):
             ) 
             for warehouse in data
         ]
-    # for rezult in rez:
-    #     print(rezult.Description)
+   
     return rez
 
-# if __name__ == "__main__":
-#     # ref = "0ebd8e4d-4b3a-11e4-ab6d-005056801329"
-#     # ref = "8d5a980d-391c-11dd-90d9-001a92567626"
-#     ref = "2d6a26fb-e9aa-11e4-8a92-005056887b8d"
-    
-#     get_warehouses_by_ref(ref)
-    # find_by_ref(ref)
 
+
+# if __name__ == "__main__":
+#     # get_settlement()
+#     datas = get_settlements("Київ")
+#     for data in datas:
+#         print(data)
+#    
 

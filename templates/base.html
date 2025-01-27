@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
 {% load category_tags %}
+{% load shop_info_tags %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'cart/css/cart.css' %}">
     <script src="{% static 'cart/js/cart.js' %}" defer></script>
     <script src="{% static 'js/base.js' %}" defer></script>
+    <link rel="icon" href="{% static 'images/favicon.webp' %}" type="image/webp" sizes="16x16">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {% block extracss %}
     {% endblock %}
@@ -17,36 +20,45 @@
 <body>
     {% csrf_token %}
     <header>
+        <div class="logo-in-header">
+            <img src="{% show_logo %}" alt="">
+        </div>
         <nav>
-            <ul class="menu"> 
-                {% if user.is_authenticated %}
-                <div class="name-user">{{ user.get_short_name|default:"Користувач" }}</div>
-                {% endif %}
+                
                 
                 <div class="dropdown">
                     <button id="dropdown-button" class="dropdown-button">Каталог</button> 
-                        <!-- <ul class="dropdown-catalog">
-                      
-                            {% show_caregories %} 
-                        </ul>                 -->
                 </div>
-
-
-                <li class="menu-item"><a href="/">Home</a></li> 
-                <li class="menu-item"><a href="/products/">Products</a></li>
-                <li class="menu-item"><a href="/about">About</a></li>
-                <li class="menu-item"><a href="/contact">Contact</a></li> 
                 
-            </ul>
-            <ul class="user-menu">
-                {% if user.is_authenticated %}
-                <li class="menu-user"><a href="{% url 'logout' %}">logout</a></li> 
-                {% else %}
-                <li class="menu-user"><a href="{% url 'login' %}">login</a></li> 
-                {% endif %}
-                <!-- <li class="menu-user" id="opencart"><a href="/products/">cart</a></li> -->
-                <li class="menu-user"><button id="opencart">cart</button></li>
-            </ul>
+
+                <div class="menu-item-div">
+                    <ul class="meny-items">
+                        <li class="menu-item"><a href="/">Головна сторінка</a></li> 
+                        <li class="menu-item"><a href="/products/">Продукти</a></li>
+                        <li class="menu-item"><a href="/about">Про нас</a></li>
+                        <li class="menu-item"><a href="/contact">Контакти</a></li> 
+                    </ul>
+                </div>
+            
+            <div class="user-menu">
+                <ul class="user-menu-ul">
+                    <div class="loggining-div">
+                        {% if user.is_authenticated %}
+                            <div class="name-user">
+                                {{ user.get_short_name|default:"Користувач" }}
+                            </div>
+                        {% endif %}
+
+                        {% if user.is_authenticated %}
+                        <li class="menu-user"><a href="{% url 'logout' %}">Вийти</a></li> 
+                        {% else %}
+                        <li class="menu-user"><a href="{% url 'login' %}">Увійти</a></li> 
+                        {% endif %}
+                    </div>
+                    <!-- <li class="menu-user" id="opencart"><a href="/products/">cart</a></li> -->
+                    <li class="menu-user"><button id="opencart">Кошик</button></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <main>
@@ -58,12 +70,27 @@
         
         <div class="categories-menu">
             <div class="header">
-            
+                <img src="{% show_logo %}" alt="">
+                <span class="shop_name">{% show_shop_name %}</span>
             </div>
-            <ul class="dropdown-catalog">
-                        
-                {% show_caregories %} 
-            </ul> 
+            <div class="carogoryes_list">
+                <ul class="dropdown-catalog">
+                            
+                    {% show_caregories %} 
+                </ul> 
+            </div>
+            <div class="contact_phone_in_menu">
+                {% show_phone %}
+            </div> 
+            <div class="contact_email_in_menu">
+                {% show_email %}
+            </div>
+
+            <div class="social-links_in_menu">
+                <a href="{% show_instagram %}"><img src="{% static 'shopInfo/images/instagram.png' %}" alt="" width="25" height="25"></a>
+                <a href="{% show_facebook %}"><img src="{% static 'shopInfo/images/facebook.png' %}" alt="" width="25" height="25"></a>
+                <a href="{% show_telegram %}"><img src="{% static 'shopInfo/images/telegram.png' %}" alt="" width="25" height="25"></a>
+            </div>
         </div>
     </div>
 
@@ -91,7 +118,28 @@
     </div>
 
     <footer>
-        <!-- Футер -->
+        <div class="footer-header">
+
+        </div>
+        <div class="footer-body">
+            
+            <div class="contact-span-footer">
+                <h5>Графік роботи</h5>
+                <p class="work-on">{% show_work_span_on %}</p>
+                <p class="workoff">{% show_work_span_of %}</p>
+            </div>
+            <div class="logo-in-footer">
+                <img src="{% show_logo %}" alt="">
+            </div>
+            <div class="social-links">
+                <a href="{% show_instagram %}"><img src="{% static 'shopInfo/images/instagram.png' %}" alt="" width="25" height="25"></a>
+                <a href="{% show_facebook %}"><img src="{% static 'shopInfo/images/facebook.png' %}" alt="" width="25" height="25"></a>
+                <a href="{% show_telegram %}"><img src="{% static 'shopInfo/images/telegram.png' %}" alt="" width="25" height="25"></a>
+            </div>
+        </div>
+        <div class="footer-footer">
+            <span>@ 2025 ShopHub Всі права захищені</span>
+        </div>
     </footer>
 </body>
 </html>

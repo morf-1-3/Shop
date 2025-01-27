@@ -1,10 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load category_tags %}
 
 {% block extracss %}
+<script src="{% static 'catalog/js/products.js' %}" defer></script>
+
 <link rel="stylesheet" href="{% static 'catalog/css/products.css' %}">
 {% endblock %}
 {% block content %}
+    <div class="filters">
+        <form action="" method="get">
+            
+            <div class="filter-by-category">
+                {% get_categories as categories_for_filter %}
+                    {% for category_filt in categories_for_filter %}                
+                        <label>
+                            <input type="checkbox" name="filter_categories" value="{{category_filt.name_en}}">{{category_filt.name}}
+                        </label>
+                        <br>
+                    {% endfor %}
+
+            </div>
+
+            <div class="filter-by-price">
+                <label for="price-range">Ціновий діапазон:</label>
+                <div class="slider-for-price" id="price-range">
+                    <input type="range" name="price_min" id="price_min" step="50" min="{{min_price}}" max="{{max_price}}" value="{{min_price}}">
+                    <input type="range" name="price_max" id="price_max" step="50" min="{{min_price}}" max="{{max_price}}" value="{{max_price}}">
+                </div>
+
+                <div class="price-values">
+                    <span id="min-price-value">{{min_price}}</span> грн
+                    <span>-</span>
+                    <span id="max-price-value">{{max_price}}</span> грн
+                </div>
+            </div>
+
+            <button class="filtring" id="filtring">
+                Застосувати
+            </button>
+            <div class="refresh-page">
+                <a href="/products/">Очистити фільтри</a>
+            </div>
+        </form>
+
+
+    </div>
+
+
+
     <div class="items">
         {% for product in products%}
 

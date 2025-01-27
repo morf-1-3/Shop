@@ -1,140 +1,158 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 header {
-    background-color: #333;
-    color: #fff;
-    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    height: 50px; 
+    padding: 0 20px; 
+    background-color: #222;
+    color: #fff; 
+    border-bottom: 2px solid #444; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+.logo-in-header img {
+    display: flex;
     
-    max-height: 40px;
-    height: 40px;
+    height: 50px;
+    width: 50px;
+    object-fit: cover; 
+    border-radius: 8px; 
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+nav {
     display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* footer {
-    background-color: #585353;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-} */
-/* Стилі для навігаційного меню користувача */
-/* Стилі для навігаційного меню користувача */
-.user-menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: flex-end; /* Вирівнювання по правому краю */
-}
-
-.user-menu li {
-    margin: 0 15px;
-}
-
-.user-menu li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.user-menu li a:hover {
-    text-decoration: underline;
-}
-
-
-/* .background{
-    display: none;
-    width: 100dvw;
-    height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.43);
-    position: fixed;
-    left: 0;
-    top: 0;
-
-    justify-content: center;
-    align-items: center;
-}
-
-.background.active{
-    display: flex;
-}
-
-.cart{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 500px;
-    background-color: white;
-    border-radius: 15px;
-    padding: 20px;
-}
-.cart-header{
-    display: flex;
+    width: 100%; 
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    background-color: #ccc;
-    padding: 5px;
-    border-radius: 15px;
+    padding-left: 20px;
 }
-.products-in-cart{
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    align-items: center;
+
+
+
+.dropdown {
+    position: relative;
 }
-.products-in-cart img{
-    width: 100px;
-    height: 100px;
-}
-.count-product{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.count-product input{
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    text-align: center;
-    background-color: transparent;
+
+.dropdown-button {
+    background-color: #555;
+    color: #fff;
+    padding: 5px 10px;
     border: none;
-} */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+    background-color: #777;
+}
+
+.menu-item-div {
+    flex-grow: 1; 
+    text-align: center; 
+}
+
+.meny-items {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    margin: 0 10px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item a:hover {
+    background-color: #444;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+}
+
+.user-menu-ul {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Відступ між елементами */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.name-user {
+    font-weight: bold;
+    font-size: 16px;
+    color: #6e6c6c; /* Основний текстовий колір */
+    margin-right: 10px; /* Відступ праворуч від імені */
+}
+
+.menu-user {
+    margin-left: 10px;
+}
+
+.menu-user a,
+#opencart {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #555;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-user a:hover,
+#opencart:hover {
+    background-color: #777;
+}
+
+.loggining-div {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Відступ між ім'ям і кнопкою */
+}
 
 
-/* /////////////////////////////////////////////////// */
 
+/* //////////////////////////////body///////////// */
+/* Універсальний стиль для body */
+body {
+    font-family: Arial, sans-serif; /* Задає шрифт для всього сайту */
+    margin: 0; /* Відміняє стандартні зовнішні відступи */
+    padding: 0; /* Відміняє стандартні внутрішні відступи */
+    box-sizing: border-box; /* Забезпечує облік рамки та відступів у загальну ширину та висоту елементів */
+    line-height: 1.6; /* Покращує читабельність тексту, задаючи висоту рядка */
+    background-color: #f4f4f4; /* Задає фоновий колір сторінки */
+    color: #333; /* Задає колір тексту */
+}
+
+
+
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/* ////////////////////cart/////////cart////////// */
 
 
 
@@ -153,6 +171,7 @@ nav ul li a:hover {
 .background-menu.active{
     display: flex;
 }
+/* ////////////////////cart/////////cart////////// */
 
 .categories-menu {
     display: flex;
@@ -170,11 +189,185 @@ nav ul li a:hover {
     /* padding-top: 60px;  */
 }
 
-.header {
+.categories-menu .header {
+    display: flex;
+    align-items: center;
     background-color: #333;
     color: #fff;
     padding-top: 0px;
     width: 100%;
-    max-height: 50px;
+    max-height: 52px;
+    height: 52px;
+}
+.categories-menu .header img {
+    display: flex;
+    padding-left: 0px;
+    padding-top: 0px;
+    width: 50px; 
+    height: 100%; 
+    max-width: 100%; 
+    object-fit: cover; 
+    display: block; 
+}
+
+.shop_name {
+    
+    margin-left: 20px; /* Відступ між зображенням та текстом */
+    font-size: 1.5rem; /* Збільшення розміру шрифту, якщо необхідно */
+    color: #f7e9e9; /* Колір тексту */
+}
+
+
+.carogoryes_list {
+    padding: 15px 10px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    flex-grow: 1;
+}
+
+.carogoryes_list .dropdown-catalog {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.carogoryes_list .dropdown-catalog a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.carogoryes_list .dropdown-catalog a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.contact_phone_in_menu,
+.contact_email_in_menu,
+.social-links_in_menu {
+    padding: 15px 10px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+.contact_phone_in_menu,
+.contact_email_in_menu {
+    border-top: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.social-links_in_menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Фіксуємо телефон, пошту та соцмережі внизу меню */
+.contact_phone_in_menu,
+.contact_email_in_menu,
+.social-links_in_menu {
+    position: sticky;
+    bottom: 0;
+    background-color: #f9f9f9;
+    z-index: 10;
+}
+
+/* Для іконок соцмереж */
+.social-links_in_menu a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.social-links_in_menu a:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+/* //////footer/////footer */
+footer {
+    /* margin-top: auto; */
+    /* display: flex;
+    width: 100vh; */
+    margin-bottom: auto;
+   
+}
+
+/* Стилі для різних секцій footer */
+.footer-header {
+    background-color: #333; /* Темно-сірий колір */
+    color: white;
+    height: 15px;
+}
+
+.footer-body {
+    background-color: #444; /* Трохи світліший сірий */
+    color: white;
     height: 50px;
 }
+
+.footer-footer {
+    background-color: #000; /* Чорний колір */
+    color: white;
+    height: 25px;
+    align-items: center;
+    text-align: center;
+    /* padding: 0px; */
+
+}
+
+/* ......... */
+.footer-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px; /* Висота футера */
+    padding: 0 20px; /* Відступи зліва та справа */
+    background-color: #343a40; /* Темний фон */
+    color: #fff; /* Білий колір тексту */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Легка тінь над футером */
+}
+
+.contact-span-footer {
+    text-align: left;
+}
+
+.contact-span-footer h5 {
+    margin: 0;
+    font-size: 14px; /* Зменшений розмір шрифту для заголовка */
+    font-weight: 600; /* Жирний текст */
+}
+
+.contact-span-footer p {
+    margin: 0;
+    font-size: 12px; /* Зменшений розмір шрифту для тексту */
+}
+
+.logo-in-footer img {
+    height: 70px; /* Встановлює висоту логотипу */
+    padding-top: 6px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+}
+
+.social-links a {
+    margin: 0 10px; /* Відступи між соціальними іконками */
+}
+
+
+

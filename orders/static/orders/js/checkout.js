@@ -142,6 +142,7 @@ function getListSettlements(event){
     
 }
 searchCity.addEventListener('input',getListSettlements)
+searchCity.addEventListener('input',openScroll)
 
 /////////////////////////////////////////////////////////
 const searchWarehouse = document.querySelector('#warehouse_cearch')
@@ -176,7 +177,7 @@ function openScrollWarehouse(event){
 searchWarehouse.addEventListener('click', closeScroll)
 searchWarehouse.addEventListener('click', openScrollWarehouse)
 searchWarehouse.addEventListener('input', openScrollWarehouse)
-
+searchCity.addEventListener('click',closeScrollWarehouses)
 
 function closeScrollWarehouses(event){
     event.stopPropagation();

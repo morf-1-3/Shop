@@ -1,0 +1,41 @@
+.description-container {
+    font-family: Arial, sans-serif;
+    line-height: 1.6; /* Збільшує читабельність тексту */
+    color: #333; /* Темно-сірий колір для тексту */
+    background-color: #f9f9f9; /* Легкий фон для контрасту */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Обмеження ширини для зручності читання */
+    margin: 20px auto; /* Центрування блоку */
+}
+
+.description-container p {
+    margin: 15px 0; /* Додаємо відступ між абзацами */
+}
+
+.description-container strong {
+    color: #2c3e50; /* Виділення жирного тексту темно-синім кольором */
+}
+
+.description-container ul, .description-container ol {
+    padding-left: 20px; /* Відступ для списків */
+    margin: 15px 0;
+}
+
+.description-container ul li, .description-container ol li {
+    margin-bottom: 10px; /* Відступ між пунктами списку */
+}
+
+.description-container ul li::marker {
+    color: #e74c3c; /* Червоний маркер для ul списків */
+}
+
+.description-container ol li {
+    font-weight: bold; /* Жирний текст для пунктів ol списків */
+}
+
+.description-container h1, .description-container h2, .description-container h3 {
+    color: #1abc9c; /* М'ятний колір для заголовків */
+    margin-bottom: 10px;
+}

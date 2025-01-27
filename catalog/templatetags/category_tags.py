@@ -7,3 +7,8 @@ register = template.Library()
 def show_caregories():
     categories = Category.objects.all()
     return {"categories": categories}
+
+@register.simple_tag()
+def get_categories():
+    categories = Category.objects.all()
+    return  categories
