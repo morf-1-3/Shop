@@ -32,15 +32,18 @@ def register(request: HttpRequest):
         context["username"] = username
         context["phone_number"] = phone_number
         if first_name and last_name and username and email and password and phone_number:
-            try:
-                
-                new_user = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
-                UserProfile.objects.create(phone_number=phone_number, user=new_user)
+            if len(first_name)<15:
+                try:
+                    
+                    new_user = User.objects.create_user(username=username,email=email,password=password,first_name=first_name,last_name=last_name)
+                    UserProfile.objects.create(phone_number=phone_number, user=new_user)
 
 
-                return redirect("login")
-            except IntegrityError:
-                context['error'] = "Логін вже існує"
+                    return redirect("login")
+                except IntegrityError:
+                    context['error'] = "Логін вже існує"
+            else:
+                context["error"] = "Ім'я має бути коротше"
         else:
             context['error'] = "Заповніть всі поля"
     return render(request,'users/register.html',context)

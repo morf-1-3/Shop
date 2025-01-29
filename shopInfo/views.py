@@ -1,10 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from .models import *
+# from ..catalog.models import Category
+from catalog.models import Category, Product
 # Create your views here.
 def index(request: HttpRequest):
-
-    return render(request,"shopInfo/index.html")
+    categories = Category.objects.all()[:4]
+    products = Product.objects.all()[:4]
+    context={
+        "categories": categories,
+        "products": products
+    }
+    return render(request,"shopInfo/index.html",context)
 
 
 

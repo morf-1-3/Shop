@@ -1,10 +1,61 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load shop_info_tags %}
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'shopInfo/css/index.css' %}">
 {% endblock %}
 {% block content %}
+<!-- <div class="banner-main">
+    <img src="{% static 'shopInfo/images/babbermain.webp' %}" alt="">  
+</div>
 <div class="background_index">
     <img src="{% static 'shopInfo/images/main2.webp' %}" alt="">
+</div> -->
+<div class="background_index">
+    <img src="{% static 'shopInfo/images/main3.jpg' %}" alt="Фонове зображення">
 </div>
+
+<!-- Головний банер -->
+<div class="banner-main">
+    <img src="{% static 'shopInfo/images/banner5.jpg' %}" alt="Головний банер">
+    <div class="banner-text">
+        <h1>Ласкаво просимо до {% show_shop_name %}!</h1>
+        <p>Обирайте найкращі товари за вигідними цінами</p>
+        <a href="/products/" class="btn">Переглянути каталог</a>
+    </div>
+</div>
+
+<!-- Категорії товарів -->
+<section class="categories">
+    <h2>Популярні категорії</h2>
+    <div class="category-list">
+        {% for category in categories %}
+        <div class="category">
+            <a href="/products/?filter_categories={{ category.name_en }}">
+                <img src="{{category.image.image.url}}" alt="{{category.name_en}}">
+                <p>{{category.name}}</p>
+            </a>
+        </div>
+        {% endfor %}
+        
+    </div>
+</section>
+
+<!-- Список товарів -->
+<section class="products">
+    <h2>Топові товари</h2>
+    <div class="product-list">
+        {% for product in products %}
+        <div class="product">
+            <img src="{{product.images.first.image.url}}" alt="Товар 1">
+            <h3>{{product.name}}</h3>
+            <p>Ціна: {{product.price}} грн</p>
+            <a href="/products/{{product.category.name}}/{{product.id}}" class="btn">До товару</a>
+        </div>
+        {% endfor %}
+        
+    </div>
+</section>
+
+
 {% endblock %}

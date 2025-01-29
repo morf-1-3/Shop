@@ -4,6 +4,7 @@ from .models import *
 from cart.models import *
 from users.models import *
 from .services.nova_posta import *
+from .services.way_for_pay import reques_to_api
 from django.http import JsonResponse
 
 # Create your views here.
@@ -25,14 +26,16 @@ def checkout(request: HttpRequest):
         last_name = request.POST["user_last_name"]
         phone_number = request.POST["phone_number"]
         warehouse_ref = request.POST["id-warehouse"]
+        payment_method = request.POST["payment_method"]
         context["first_name"] = first_name
         context["last_name"] = last_name
         context["phone_number"] = phone_number
-        if(first_name and last_name and phone_number and warehouse_ref):
+        if(first_name and last_name and phone_number and warehouse_ref and payment_method):
             if 2<=len(first_name)<30 and 2<=len(last_name)<30:
                 if 10<=len(phone_number) <=13:
                     if True:
                         order = Order.objects.create()
+                        params_for_way_to_pay = []
                         reveiver = Receiver.objects.create(
                             first_name = first_name,
                             last_name = last_name,
@@ -46,7 +49,21 @@ def checkout(request: HttpRequest):
                                 order = order,
                                 count = product.count
                             )
-                    return render(request,"orders/success.html")
+                            if(payment_method == "card"):
+                               params_for_way_to_pay.append({
+                                   "name": product.product.name,
+                                   "price": int(product.product.price),
+                                   "count": product.count,
+                                   "total_price": int(cart.get_total_price())
+                               }) 
+
+                    if(payment_method == "cash"):
+                        return render(request,"orders/success.html")
+                    
+                    if(payment_method == "card"):
+                        pay_url = reques_to_api(params_for_way_to_pay)
+                        if pay_url:
+                            return redirect(pay_url)
                 else:
                     context["error"] = "Введіть коректно телефон"
                     # return render(request,'orders/checkout_order.html',context)

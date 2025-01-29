@@ -1,4 +1,4 @@
 
     {% for category in categories %}
-    <li><a href="/products/{{ category.name_en }}/">{{ category.name }}</a></li>
+    <li><a href="/products/?filter_categories={{ category.name_en }}">{{ category.name }}</a></li>
     {% endfor %}
