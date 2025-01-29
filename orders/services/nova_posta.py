@@ -1,7 +1,10 @@
 # d52574df69afe93302a2ecf161829429
 import requests
 from types import SimpleNamespace
-API="d52574df69afe93302a2ecf161829429"
+from dotenv import load_dotenv
+import os
+load_dotenv()
+API=os.getenv("API_POSHTA")
 URL = "https://api.novaposhta.ua/v2.0/json/"
 
 main_sities = [

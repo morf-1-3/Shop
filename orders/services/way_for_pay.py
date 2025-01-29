@@ -6,7 +6,7 @@ import hashlib
 API = "https://api.wayforpay.com/api"
 
 
-SECRET_KEY ="8ac6a493c87ebbe8b1aed09e6f7a7348ea1658f6"
+# Базовий ключ, тому не ховаю
 SECRET_KEY_TEST = "flk3409refn54t54t*FNJRET"
 
 def reques_to_api(parametrss):
