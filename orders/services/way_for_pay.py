@@ -4,7 +4,7 @@ import random
 import hmac
 import hashlib
 API = "https://api.wayforpay.com/api"
-
+# for deploy i use ap_prox = "https://proxeforwayforpay.folyahov13012000.workers.dev/" becouse free version pathon anewhere block request
 
 # Базовий ключ, тому не ховаю
 SECRET_KEY_TEST = "flk3409refn54t54t*FNJRET"
@@ -59,10 +59,11 @@ def reques_to_api(parametrss):
     return response["invoiceUrl"]
 
 def check():
+    ap_prox = "https://proxeforwayforpay.folyahov13012000.workers.dev/"
     # string = "test_merch_n1;www.shophub.com;test_order_for_shopHub14702;1421412898;439587.0;UAH;OnePlus 11;Sony Xperia 1 V;9;5;30799.0;40599.0"
-    string = "test_merch_n1;www.shophub.com;test_order_for_shopHub14702;1421412898;439587.00;UAH;OnePlus 11;Sony Xperia 1 V;9.0;5.0;30799.00;40599.00"
+    string = "test_merch_n1;www.shophub.com;test_order_for_shopHub1470222;1421412898;439587;UAH;OnePlus 11;Sony Xperia 1 V;9;5;30799;40599"
     hash_value = hmac.new(SECRET_KEY_TEST.encode(), string.encode(), hashlib.md5).hexdigest()
-
+    
     query_json = {
         
     "transactionType": "CREATE_INVOICE",
@@ -70,12 +71,12 @@ def check():
     "merchantDomainName": "www.shophub.com",
     "merchantSignature": hash_value,
     "apiVersion": 1,
-    "orderReference": "test_order_for_shopHub14702",
+    "orderReference": "test_order_for_shopHub1470222",
     "orderDate": 1421412898,
-    "amount": 439587.0,
+    "amount": 439587,
     "currency": "UAH",
     "productName": ["OnePlus 11", "Sony Xperia 1 V"],
-    "productPrice": [30799.0, 40599.0],
+    "productPrice": [30799, 40599],
     "productCount": [9, 5]        
     }
 
@@ -84,10 +85,10 @@ def check():
     
 
     print("merchantSignature:", hash_value)
-    response = requests.post(API,json=query_json).json()
+    response = requests.post(ap_prox,json=query_json).json()
     print(response)
 
-# check()
+check()
 # reques_to_api()
 # "4941ea0c7f5b4833c2bd06b1fefcdc0b"
 # "2d838772256b86faaee8dd8b9f495abd"
