@@ -19,8 +19,8 @@ An online electronics store built with Django, featuring product filtering, orde
 
 ### 1️⃣ Clone the repository
 ```sh
-git clone https://github.com/yourusername/electronics-store.git
-cd electronics-store
+git clone https://github.com/morf-1-3/Shop
+cd Store
 ```
 
 ### 2️⃣ Install dependencies
